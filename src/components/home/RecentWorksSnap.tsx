@@ -86,7 +86,7 @@ export const RecentWorksSnap: React.FC<RecentWorksSnapProps> = ({ jobs, onOpenJo
                 <img
                   src={coverUrl}
                   alt={job.title}
-                  className="w-full h-full object-cover grayscale contrast-[1.05] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />

@@ -73,7 +73,7 @@ export const BentoCategories: React.FC<BentoCategoriesProps> = ({ jobs }) => {
         >
           {/* Background image with gentle hover zoom */}
           <div
-            className="absolute inset-0 bg-cover bg-center grayscale contrast-[1.05] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
             style={{ backgroundImage: `url(${weddingStats.coverUrl})` }}
           />
           {/* Gradient Scrim */}
@@ -120,7 +120,7 @@ export const BentoCategories: React.FC<BentoCategoriesProps> = ({ jobs }) => {
             className="group relative rounded-3xl overflow-hidden min-h-[240px] flex-1 flex flex-col justify-between p-7 border border-border-light dark:border-border-dark bg-card-dark text-white shadow-xl transition-all duration-300 hover:shadow-2xl hover:border-accent/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             <div
-              className="absolute inset-0 bg-cover bg-center grayscale contrast-[1.05] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
               style={{ backgroundImage: `url(${ordinationStats.coverUrl})` }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20" />
@@ -154,7 +154,7 @@ export const BentoCategories: React.FC<BentoCategoriesProps> = ({ jobs }) => {
             className="group relative rounded-3xl overflow-hidden min-h-[240px] flex-1 flex flex-col justify-between p-7 border border-border-light dark:border-border-dark bg-card-dark text-white shadow-xl transition-all duration-300 hover:shadow-2xl hover:border-accent/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             <div
-              className="absolute inset-0 bg-cover bg-center grayscale contrast-[1.05] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
               style={{ backgroundImage: `url(${eventsStats.coverUrl})` }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20" />

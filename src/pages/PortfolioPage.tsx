@@ -26,9 +26,6 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ defaultCategory })
       ? queryCategory
       : defaultCategory || 'all';
 
-  // โหมดภาพขาวดำ (Black & White Monochrome Mode)
-  const [isBwMode, setIsBwMode] = useState<boolean>(true);
-
   // ดึงงานทั้งหมดที่เผยแพร่แล้ว (ดึงครั้งเดียวแล้วกรอง client-side ทันใจ)
   const { jobs, loading } = useJobs(undefined, true);
 
@@ -163,47 +160,33 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ defaultCategory })
             </p>
           </div>
 
-          {/* Category Filter Tabs & B&W Mode Switcher */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
-            {/* Filter Tabs */}
-            <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-2xl sm:rounded-full bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark shrink-0">
-              {filterTabs.map((tab) => {
-                const active = tab.id === activeCategory;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => handleSelectCategory(tab.id)}
-                    className={`flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-medium rounded-full transition-all duration-200 whitespace-nowrap ${
+          {/* Category Filter Tabs */}
+          <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-2xl sm:rounded-full bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark shrink-0">
+            {filterTabs.map((tab) => {
+              const active = tab.id === activeCategory;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => handleSelectCategory(tab.id)}
+                  className={`flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-medium rounded-full transition-all duration-200 whitespace-nowrap ${
+                    active
+                      ? 'bg-accent text-accent-fg shadow-sm'
+                      : 'text-fg-light-muted dark:text-fg-dark-muted hover:text-fg-light dark:hover:text-fg-dark'
+                  }`}
+                >
+                  <span>{tab.label}</span>
+                  <span
+                    className={`text-[11px] px-1.5 py-0.2 rounded-full font-heading ${
                       active
-                        ? 'bg-accent text-accent-fg shadow-sm'
-                        : 'text-fg-light-muted dark:text-fg-dark-muted hover:text-fg-light dark:hover:text-fg-dark'
+                        ? 'bg-black/15 dark:bg-white/20 text-accent-fg'
+                        : 'bg-card-light-subtle dark:bg-card-dark-subtle text-fg-light-muted dark:text-fg-dark-muted'
                     }`}
                   >
-                    <span>{tab.label}</span>
-                    <span
-                      className={`text-[11px] px-1.5 py-0.2 rounded-full font-heading ${
-                        active
-                          ? 'bg-black/15 dark:bg-white/20 text-accent-fg'
-                          : 'bg-card-light-subtle dark:bg-card-dark-subtle text-fg-light-muted dark:text-fg-dark-muted'
-                      }`}
-                    >
-                      {tab.count}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* B&W / Color Switcher */}
-            <button
-              type="button"
-              onClick={() => setIsBwMode(!isBwMode)}
-              className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark hover:border-fg-light dark:hover:border-fg-dark transition-all text-xs font-medium text-fg-light dark:text-fg-dark shadow-sm shrink-0"
-              title="สลับโหมดภาพขาวดำ / สีธรรมชาติ"
-            >
-              <span className={`w-2.5 h-2.5 rounded-full transition-all ${isBwMode ? 'bg-accent ring-2 ring-accent/30' : 'bg-transparent border border-fg-light-muted'}`} />
-              <span>{isBwMode ? 'ภาพขาวดำ (B&W)' : 'ภาพสีธรรมชาติ'}</span>
-            </button>
+                    {tab.count}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -292,9 +275,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ defaultCategory })
                             src={photo.thumb_path || photo.storage_path}
                             alt={photo.alt_text || `${job.title} - รูปที่ ${index + 1}`}
                             loading="lazy"
-                            className={`w-full h-auto object-cover transition-all duration-700 ease-out group-hover:scale-105 ${
-                              isBwMode ? 'grayscale contrast-[1.06] group-hover:grayscale-0' : ''
-                            }`}
+                            className="w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                           />
 
                           {/* Hover Overlay */}

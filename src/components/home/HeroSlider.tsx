@@ -42,7 +42,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ jobs }) => {
         {slides.map((url, index) => (
           <div
             key={url + index}
-            className={`absolute inset-0 bg-cover bg-center grayscale contrast-[1.08] transition-opacity duration-1000 ease-in-out ${
+            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
               index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
             }`}
             style={{
